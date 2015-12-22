@@ -1,0 +1,21 @@
+<p><input type='search' class='form-control',placeholder="enter text to search here" ng-model="query"/></p>
+
+<table class="table table-hover table-bordered">
+	<thead>
+		<tr>
+			<th ng-repeat='field in fields' ng-click='sort(field)'>
+				{{field}}
+				<span ng-show='sort.field === field && !sort.order' class='glyphicon glyphicon-triangle-bottom'></span>
+				<span ng-show='sort.field === field && sort.order' class='glyphicon glyphicon-triangle-top'></span>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat='exchange in exchangedata | filter:query | orderBy:sort.field:sort.order'>
+			<td ng-repeat='field in fields'>
+				{{exchange[field][0]}}
+			</td>
+		</tr>	
+	</tbody>
+
+</table>
